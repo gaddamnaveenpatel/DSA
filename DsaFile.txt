@@ -1,0 +1,687 @@
+problem 1
+=================================
+
+package org.example.Arrays;
+
+public class arranged_in_a_row {
+
+
+    public static void main(String[] args) {
+
+
+        int nums[] = {100,40,17,9,73,75};
+
+        int k = 3;
+
+        int a = cardrow(nums, k);
+
+        System.out.println(a);
+    }
+
+    static int cardrow(int nums[], int k) {
+
+        int sum = 0;
+
+        for (int i = nums.length-k; i < nums.length; i++) {
+            sum += nums[i];
+        }
+        return sum;
+    }
+}
+==============================================================
+problem 2
+==============================================================
+package org.example.Arrays;
+
+import java.util.Arrays;
+
+public class Median_of_two_Sorted_Arrays_of_Different_Sizes {
+
+
+    public static void main(String args[]){
+
+
+            int arr1[] = {};
+
+
+        int arr2[] = {2, 4, 5, 6};
+
+
+        float a = mediuman(arr1,arr2);
+
+        System.out.println(a);
+
+    }
+
+    static float mediuman(int arr1[],int arr2[]){
+
+
+        int arr3[] = new  int[arr1.length+arr2.length];
+
+        int index = 0;
+
+        for(int i =0;i<arr1.length;i++){
+
+
+            arr3[index] = arr1[i];
+
+            index++;
+        }
+
+        while (index<arr2.length){
+
+            for(int j = 0;j<arr2.length;j++){
+
+
+                arr3[index] = arr2[j];
+                index++;
+            }
+        }
+
+
+        int midden = arr3.length/2;
+
+        float middleofarr = 0;
+
+
+
+        for(int k =0;k<arr3.length;k++){
+
+            if(arr3[k]==arr3[midden]){
+
+                middleofarr = arr3[k];
+
+
+            }
+        }
+
+        float mid = midden+middleofarr/2;
+
+        return mid;
+    }
+
+}
+================================================================
+probelm 3
+===============================================================
+package org.example.binaryserach;
+
+public class binaryserach {
+
+    public static void main(String[] args) {
+
+        int nums[] = {1,2,3,4,5,6};
+
+        int targret = 5;
+
+
+        int a  = numberOfTheWords(nums,targret);
+
+        System.out.println(a);
+    }
+
+    static int numberOfTheWords(int nums[], int target) {
+        int start = 0;
+        int end = nums.length - 1;
+
+        while (start <= end) {
+            // Correct formula for calculating mid
+            int mid = start + (end - start) / 2;
+
+            if (nums[mid] == target) {
+                return mid; // Return the index of the found element
+            } else if (nums[mid] < target) {
+                start = mid + 1; // Narrow search to the right half
+            } else {
+                end = mid - 1; // Narrow search to the left half
+            }
+        }
+
+        return -1; // Return -1 if target not found
+    }
+}
+========================================================================
+probelm 4
+========================================================================
+
+package org.example.inorder_banary_tree;
+
+public class TreeNode {
+
+    int val;
+
+    TreeNode left;
+
+    TreeNode right;
+
+
+    TreeNode(int val){
+
+       this.val = val;
+
+       left = null;
+       right = null;
+
+    };
+
+
+}
+
+
+==========
+package org.example.inorder_banary_tree;
+
+public class binarySearch {
+
+    public void inorderTraversal(TreeNode root){
+
+        if(root==null){
+           return;
+
+        }
+
+
+        inorderTraversal(root.left);
+
+        System.out.print(root.val+" ");
+
+        inorderTraversal(root.right);
+    }
+
+
+    public static void main(String args[]){
+
+
+        TreeNode tt = new TreeNode(4);
+
+        tt.left = new TreeNode(2);
+        tt.right = new TreeNode(6);
+
+        tt.left.left = new TreeNode(1);
+
+        tt.left.right = new TreeNode(3);
+
+        tt.right.left = new TreeNode(5);
+
+        tt.right.right = new TreeNode(7);
+
+        binarySearch tree = new binarySearch();
+
+        System.out.println("inorder traverasl ");
+
+        tree.inorderTraversal(tt);
+    }
+}
+==============================================================================
+problem 5
+==============================================================================
+
+package org.example.Linkied.Lininkedlist;
+
+public class LinkedList {
+
+    class Node{
+
+
+        int data;
+
+        Node next;
+
+        Node(int data){
+
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    private Node head;
+
+    private Node tail;
+
+    public LinkedList(){
+
+        head = null;
+
+        tail = null;
+    }
+
+    public void add(int data){
+
+        Node new_node = new Node(data);
+
+        if(head ==null){
+
+            head = new_node;
+
+            tail = new_node;
+        }else {
+            tail.next = new_node;
+
+            tail = new_node;
+
+        }
+    }
+
+public  void dispaly(){
+
+        Node current  = head;
+
+        while (current!=null){
+
+            System.out.print("=>"+current.data);
+            current = current.next;
+        }
+
+    System.out.println("null");
+    }
+
+
+    public void middlwnode(){
+
+        Node fastpointer = head;
+
+        Node slowerpointer= head;
+
+        while (fastpointer!=null && fastpointer.next!=null){
+
+
+            fastpointer= fastpointer.next.next;
+
+            slowerpointer = slowerpointer.next;
+        }
+
+        if(slowerpointer!=null){
+
+            System.out.println(slowerpointer.data);
+
+
+
+
+
+        }
+
+
+    }
+
+public void dlete(int data){
+
+if(head==null){
+
+    return;
+}
+
+if(head.data ==data){
+
+    head = head.next;
+
+    if(head==null){
+
+        tail  = null;
+    }
+    return;
+}
+
+
+Node current = head;
+
+Node pervious = null;
+
+
+while (current!=null && current.data!=data){
+pervious =current;
+current = current.next;
+
+
+}
+
+
+if(current!=null){
+
+    pervious.next = current.next;
+
+    if(current.next==null){
+
+        tail = pervious;
+    }
+}
+}
+
+
+}
+
+============
+package org.example.Linkied.Lininkedlist;
+
+public class main {
+
+    public static void main(String[] args) {
+
+        LinkedList list = new LinkedList();
+
+        list.add(10);
+        list.add(20);
+        list.add(30);
+        list.add(40);
+        list.add(50);
+
+        list.dispaly();
+        list.middlwnode();
+
+
+    }
+
+}
+=============================================================================================
+probelm 6
+============================================================================================
+
+package org.example.Particeony.inorder_binary_tree;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class avragemarks {
+
+    public static void main(String[] args) {
+        String[][] stu = new String[][]{{"Charles","84"}
+                ,{"John","100"},{"Andy","37"},{"John","23"},{"Charles","20"}};
+
+
+        double avargeofthe = avargemarks(stu);
+
+        System.out.println(avargeofthe);
+
+           }
+
+
+    static double avargemarks(String[][] stu) {
+
+Double avarmarks = Double.MIN_VALUE;
+
+        Map<String,Integer>marksmap = new HashMap<>();
+
+        Map<String,Integer>countmap = new HashMap<>();
+
+        for(int i =0;i<stu.length;i++){
+
+            String stduent = stu[i][0];
+            int marks = Integer.parseInt(stu[i][1]);
+
+            if(marksmap.containsKey(stduent)){
+                marksmap.put(stduent,marksmap.get(stduent)+marks);
+
+            }else {
+
+                marksmap.put(stduent,marks);
+            }
+
+            if(countmap.containsKey(stduent)){
+
+                countmap.put(stduent,countmap.get(stduent)+1);
+            }else {
+
+                countmap.put(stduent,1);
+            }
+
+//            marksmap.put(stduent, marksmap.getOrDefault(stduent, 0) + marks);
+//            countmap.put(stduent, countmap.getOrDefault(stduent, 0) + 1);
+
+        }
+
+
+        for(Map.Entry<String,Integer>map:marksmap.entrySet()){
+
+            int count = map.getValue();
+
+            int marks = countmap.get(map.getKey());
+
+            Double avg = (double) count/marks;
+
+            if(avg>avarmarks){
+
+                avarmarks = avg;
+            }
+
+        }
+
+
+
+        return avarmarks;
+
+    }
+}
+=============================================================================================================
+probelm 7
+=============================================================================================================
+package org.example.Particeony.inorder_binary_tree;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class strings {
+
+    public static void main(String[] args) {
+
+        String arr[] = {"10.0.0.1 bytes=32 time=50ms TTL=63",
+                "10.0.0.2 bytes=32 time=50ms TTL=73",
+                "10.0.0.4 bytes=32 time=50ms TTL=83",
+                "10.0.0.2 bytes=32 time=50ms TTL=93",
+        };
+
+
+
+        String dd = ipadress(arr);
+
+        System.out.println(dd);
+
+
+    }
+
+    static String ipadress(String arr[]){
+
+        Map<String,Integer>ipaddress = new HashMap<>();
+
+        for(int i =0;i<arr.length;i++){
+
+            String[] sds = arr[i].split(" ");
+
+            ipaddress.put(sds[0],ipaddress.getOrDefault(sds[0],0)+1);
+
+        }
+
+        int max = 0;
+
+        String s = "";
+        for(Map.Entry<String ,Integer> d:ipaddress.entrySet()){
+
+
+            if(d.getValue()>max){
+
+                max = d.getValue();
+                s = d.getKey();
+            }
+        }
+
+
+        return s.toString();
+    }
+}
+=============================================================================================
+problem 8
+============================================================================================
+package org.example.Strings;
+
+public class Atos {
+
+    public static void main(String args[]){
+
+        String str1 = "1d23";
+
+        int a = convecrtintat0(str1);
+
+        System.out.println(a);
+
+    }
+
+    static int convecrtintat0(String str1){
+
+        if(str1.length()<0){
+
+            return -1;
+        }
+        int value = 0;
+
+        int sign = 1;
+
+        int startindex = 0;
+
+        if(str1.charAt(0)=='-'){
+
+            sign=-1;
+            startindex = 1;
+
+        }
+
+        for(int i =startindex;i<str1.length();i++){
+
+       if(!Character.isAlphabetic(str1.charAt(i))){
+           char c = str1.charAt(i);
+           value = value * 10+(c-'0');
+       }else {
+
+           return -1;
+       }
+
+        }
+
+        return value * sign;
+
+
+    }
+}
+===========================================================================================
+problem 9
+===========================================================================================
+package org.example.Strings;
+
+public class Cordinates {
+
+    public static void main(String[] args) {
+
+        String s = "URRDDL";
+int b[] = corandiatesofarray(s);
+
+for(int f:b){
+
+    System.out.print(f+" ");
+}
+
+    }
+    static int[] corandiatesofarray(String s){
+
+        int axis = 0;
+
+        int yaxis = 0;
+
+        for(int i =0;i<s.length();i++){
+
+            if(s.charAt(i)=='U'){
+                yaxis++;
+
+            } else if (s.charAt(i)=='R') {
+
+                axis++;
+            } else if (s.charAt(i)=='D') {
+
+                yaxis--;
+            } else if (s.charAt(i)=='L') {
+
+                axis--;
+            }
+        }
+        return new int[]{axis,yaxis};
+    }
+}
+==========================================================================================
+problem 10
+=============================================================================================
+package org.example.Strings;
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class Find_first_non_repeating_character_of_given_String {
+
+
+    public static void main(String[] args) {
+
+
+
+        String s = "faabbccc";
+
+        int a = contenonreptingcharter(s);
+
+        System.out.println(a);
+
+    }
+
+    static int contenonreptingcharter(String s){
+        Map<Character,Integer> dub = new LinkedHashMap<>();
+
+
+        for(int i = 0;i<s.length();i++){
+
+            if(dub.containsKey(s.charAt(i))){
+
+                dub.put(s.charAt(i),dub.get(s.charAt(i))+1);
+
+
+            }else {
+
+                dub.put(s.charAt(i),1);
+            }
+        }
+        int count = 0;
+
+
+        String ch = "";
+
+        for(Map.Entry<Character,Integer>va:dub.entrySet()){
+
+            if(va.getValue()==1){
+
+                ch = String.valueOf( va.getKey());
+
+                break;
+
+            }
+
+
+        }
+
+        if(ch.length()==0) {
+     return -1;
+        }else {
+            char cha = ch.charAt(0);
+            for (int k = 0; k < s.length(); k++) {
+
+
+                if (s.charAt(k) == cha) {
+
+                    count = k;
+                }
+
+            }
+        }
+
+        return count;
+    }
+}
+
+
+
+
+
+
+
